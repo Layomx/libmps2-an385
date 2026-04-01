@@ -7,6 +7,23 @@ Reference: ARM MPS2+ FPGA Prototyping Board Technical Reference Manual (TRM) - h
 
 
 All addresses are physical bytes addresses as seen by the CPU. No MMU is present on Cortex-M3, this is a flat memory model.
+
+Revision notes:
+ *   v1.1  - ZBT SRAM sizes corrected to 4 MB (hardware limit per [AN385])
+ *          - SSRAM 2 & 3 unified as interleaved data region per [TRM-MPS]
+ *          - PSRAM added for future external-memory use per [AN385])
+ *          - Standalone CMSDK timers renamed CMSDK_TIMER per [CMSDK]
+ *          - APB timer aliases removed (address conflict with reserved region)
+ *          - MPU base address added to PPB section per [TRM-M3]
+ *
+ *   v1.2   - ZBT prefix corrected to SSRAM throughout (per [TRM-MPS])
+ *          - FPGA peripheral block restructured: SPI2-4 were misidentified;
+ *            touchscreen and audio cfg are SBCON (not SSP), audio data is I2S
+ *          - AUDIO_I2S_BASE replaces incorrect AUDIO_I2C_BASE name
+ *          - FPGAIO_BASE added for FPGA fabric I/O block
+ *          - Shield SBCON entries renamed I2C_SHIELD0/1_BASE
+ *          - Reserved gaps explicitly marked in all peripheral sub-regions
+ *          - PPB entries condensed to single-line inline-comment style
 */
 
 #ifndef MEMORY_MAP_H
@@ -49,6 +66,7 @@ All addresses are physical bytes addresses as seen by the CPU. No MMU is present
 #define GPIO1_BASE (0x40011000UL)
 #define GPIO2_BASE (0x40012000UL)
 #define GPIO3_BASE (0x40013000UL)
+// 0x40014000 - 0x4001FFFF: Reserved
 
 // Watchdog 
 #define WATCHDOG_BASE (0x40008000UL)
@@ -56,6 +74,7 @@ All addresses are physical bytes addresses as seen by the CPU. No MMU is present
 // CMSDK Timers (APB subsystem)
 #define CMSDK_TIMER0_BASE (0x40000000UL)
 #define CMSDK_TIMER1_BASE (0x40001000UL)
+// 0x40002000 - 0x40003000: Reserved 
 
 // APB (Advanced Peripheral Bus) Peripherals (0x40000000 - specific regions)
 
@@ -64,7 +83,9 @@ All addresses are physical bytes addresses as seen by the CPU. No MMU is present
 #define UART1_BASE (0x40005000UL)
 #define UART2_BASE (0x40006000UL)
 #define UART3_BASE (0x40007000UL)
+// 0x40008000: Watchdog is here, but it's part of the AHB peripheral region, not APB
 #define UART4_BASE (0x40009000UL) // UART4 is after the watchdog, but still part of the APB peripheral region
+// 0x4000A000 - 0x4000FFFF: Reserved
 
 // FPGA Extra peripherals (Visuals, Audio & Specialized I2C)
 #define SPI0_BASE (0x40020000UL) // General purpose SPI, can be used for various peripherals
@@ -72,9 +93,14 @@ All addresses are physical bytes addresses as seen by the CPU. No MMU is present
 #define I2C_TOUCH_BASE (0x40022000UL) // SBCon for touchscreen controller
 #define I2C_AUDIO_CFG_BASE (0x40023000UL) // SBCon for audio codec configuration
 #define AUDIO_I2S_BASE (0x40024000UL) // I2S Data interface
+// 0x40025000: RESERVED                                                     */
+// 0x40026000: RESERVED                                                     */
+// 0x40027000: RESERVED 
 #define FPGAIO_BASE (0x40028000UL) // General purpose FPGA I/O, can be used for various custom peripherals implemented in the FPGA fabric
 #define I2C_SHIELD0_BASE (0x40029000UL) // Shield 0 Header
 #define I2C_SHIELD1_BASE (0x4002A000UL) // Shield 1 Header
+// 0x4002B000 – 0x4002FFFF: RESERVED
+
 
 /* 
     Private Peripheral Bus (PPB) (0xE0000000 - 0xE00FFFFF)
