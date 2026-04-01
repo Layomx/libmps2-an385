@@ -71,7 +71,7 @@ All addresses are physical bytes addresses as seen by the CPU. No MMU is present
 #define SPI1_BASE (0x40021000UL) // LCD Color SPI, optimized for driving the LCD display
 #define I2C_TOUCH_BASE (0x40022000UL) // SBCon for touchscreen controller
 #define I2C_AUDIO_CFG_BASE (0x40023000UL) // SBCon for audio codec configuration
-#define AUDIO_I2C_BASE (0x40024000UL) // I2S Data interface
+#define AUDIO_I2S_BASE (0x40024000UL) // I2S Data interface
 #define FPGAIO_BASE (0x40028000UL) // General purpose FPGA I/O, can be used for various custom peripherals implemented in the FPGA fabric
 #define I2C_SHIELD0_BASE (0x40029000UL) // Shield 0 Header
 #define I2C_SHIELD1_BASE (0x4002A000UL) // Shield 1 Header
