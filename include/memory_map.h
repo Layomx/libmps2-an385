@@ -66,44 +66,28 @@ All addresses are physical bytes addresses as seen by the CPU. No MMU is present
 #define UART3_BASE (0x40007000UL)
 #define UART4_BASE (0x40009000UL) // UART4 is after the watchdog, but still part of the APB peripheral region
 
-// SPI 
-#define SPI0_BASE (0x40020000UL) // Generic SPI
-#define SPI1_BASE (0x40021000UL) // SPI connected to LCD
-#define SPI2_BASE (0x40022000UL) // Touchscreen controller SPI
-#define SPI3_BASE (0x40023000UL) // Audio config SPI
-#define SPI4_BASE (0x40024000UL) // Audio interface SPI (I2S)
-
-// I2C
-#define I2C0_SBCON_BASE (0x40028000UL) // Shield 0 I2C controller (SBCON)
-#define I2C1_SBCON_BASE (0x40029000UL) // Shield 1 I2C controller (SBCON)
-#define I2C2_SBCON_BASE (0x4002A000UL) // General use I2C controller (SBCON)
-#define I2C3_SBCON_BASE (0x4002B000UL) // General use / Reserved 
+// FPGA Extra peripherals (Visuals, Audio & Specialized I2C)
+#define SPI0_BASE (0x40020000UL) // General purpose SPI, can be used for various peripherals
+#define SPI1_BASE (0x40021000UL) // LCD Color SPI, optimized for driving the LCD display
+#define I2C_TOUCH_BASE (0x40022000UL) // SBCon for touchscreen controller
+#define I2C_AUDIO_CFG_BASE (0x40023000UL) // SBCon for audio codec configuration
+#define AUDIO_I2C_BASE (0x40024000UL) // I2S Data interface
+#define FPGAIO_BASE (0x40028000UL) // General purpose FPGA I/O, can be used for various custom peripherals implemented in the FPGA fabric
+#define I2C_SHIELD0_BASE (0x40029000UL) // Shield 0 Header
+#define I2C_SHIELD1_BASE (0x4002A000UL) // Shield 1 Header
 
 /* 
     Private Peripheral Bus (PPB) (0xE0000000 - 0xE00FFFFF)
     Cortex-M3 internal peripherals ARM defined, not MPS2 specific
 */
 // System Control Block
-// Includes CPUID, Interrupt Control, and System Control registers
-#define SCB_BASE (0xE000ED00UL)
-
-//SysTick timer
-#define SYSTICK_BASE (0xE000E010UL)
-
-// Nested Vectored Interrupt Controller (NVIC)
-#define NVIC_BASE (0xE000E100UL)
-
-// Data Watchpoint and Trace (DWT)
-#define DWT_BASE (0xE0001000UL)
-
-// Flash Patch and Breakpoint
-#define FPB_BASE (0xE0002000UL)
-
-// Instrumentation Trace Macrocell (ITM)
-#define ITM_BASE (0xE0000000UL)
-
-// Memory Protection Unit (MPU) optional in some M3, present in AN385 design
-#define MPU_BASE (0xE000ED90UL)
+#define ITM_BASE (0xE0000000UL) // Instrumentation Trace
+#define DWT_BASE (0xE0001000UL) // Data Watchpoint & Trace
+#define FPB_BASE (0xE0002000UL) // Flash Patch & Breakpoint
+#define SYSTICK_BASE (0xE000E010UL) // Core SysTick Timer
+#define NVIC_BASE (0xE000E100UL) // Interrupt Controller
+#define SCB_BASE (0xE000ED00UL) // System Control Block
+#define MPU_BASE (0xE000ED90UL) // Memory Protection Unit
 
 /*
     Memory Region Size Helpers
