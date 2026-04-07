@@ -21,10 +21,31 @@ typdef int32_t IRQn_Type; // Signed because Cortex-M3 exceptions have negative i
 #define SysTick_IRQn (-1) // System Tick Timer
 
 
+// MPS2 AN385 External Peripheral IRQ Numbers (positive, starting from 0)
 
+// UART
+#define UART0_IRQn (0) // UART 0 recieve/transmite
+#define UART1_IRQn (1) // UART 1 recieve/transmite
+#define UART2_IRQn (2) // UART 2 recieve/transmite
+#define UART3_IRQn (3) // UART 3 recieve/transmite
+#define UART4_IRQn (4) // UART 4 recieve/transmite
 
+// CMSDK Timer
+#define CMSDK_TIMER0_IRQn (8) // CMSDK Timer 0
+#define CMSDK_TIMER1_IRQn (9) // CMSDK Timer 1
 
+// FPGA SSP / SPI (PL022)
+#define SPI0_IRQn (16) // SPI 0 general purpose
+#define SPI1_IRQn (17) // SPI 1 LCD colour display SSP
 
+// FPGA SBCON & Audio
+#define I2C_TOUCH_IRQn (18) // I2C Touchscreen controller
+#define I2C_AUDIO_CFG_IRQn (19) // Audio codec config SBCON
+#define AUDIO_I2S_IRQn (20) // I2S audio data interface
 
+// FPGA I/O Shield SBCON
+#define FPGAIO_IRQn (24) // FPGA I/O shield SBCON
+#define I2C_SHIELD0_IRQn (25) // I2C FPGA I/O shield 0 SBCON
+#define I2C_SHIELD1_IRQn (26) // I2C FPGA I/O shield 1 SBCON
 
 #endif
