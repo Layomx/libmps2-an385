@@ -48,4 +48,16 @@ typedef int32_t IRQn_Type; // Signed because Cortex-M3 exceptions have negative 
 #define I2C_SHIELD0_IRQn (25) // I2C FPGA I/O shield 0 SBCON
 #define I2C_SHIELD1_IRQn (26) // I2C FPGA I/O shield 1 SBCON
 
+// GPIO
+#define GPIO0_IRQn (32) // GPIO port 0
+#define GPIO1_IRQn (33) // GPIO port 1
+#define GPIO2_IRQn (34) // GPIO port 2
+#define GPIO3_IRQn (35) // GPIO port 3
+
+// Watchdog
+#define WATCHDOG_IRQn (36) // Watchdog timer
+
+// IRQ Count used to size NVIC tables at compile time
+#define IRQ_COUNT (64) // Total external IRQ lines in N385
+
 #endif
