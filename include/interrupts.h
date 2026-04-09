@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-typdef int32_t IRQn_Type; // Signed because Cortex-M3 exceptions have negative indices. Peripheral IRQs start at 0
+typedef int32_t IRQn_Type; // Signed because Cortex-M3 exceptions have negative indices. Peripheral IRQs start at 0
 
 // Cortex-M3 Core Exceptions Numbers (negative ARM-Defined)
 #define NonMaskableInt_IRQn (-14)  // Non Maskable Interrupt
