@@ -78,7 +78,7 @@ Revision notes:
 
 // APB (Advanced Peripheral Bus) Peripherals (0x40000000 - specific regions)
 
-// UART0
+// UART
 #define UART0_BASE (0x40004000UL)
 #define UART1_BASE (0x40005000UL)
 #define UART2_BASE (0x40006000UL)
