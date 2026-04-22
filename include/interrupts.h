@@ -52,7 +52,6 @@ typedef int32_t IRQn_Type; // Signed because Cortex-M3 exceptions have negative 
 #define GPIO1_IRQn (33) // GPIO 1 combined interrupt
 #define GPIO2_IRQn (34) // GPIO 2 combined interrupt
 #define GPIO3_IRQn (35) // GPIO 3 combined interrupt
-=======
 #define GPIO0_IRQn (32) // GPIO port 0
 #define GPIO1_IRQn (33) // GPIO port 1
 #define GPIO2_IRQn (34) // GPIO port 2
